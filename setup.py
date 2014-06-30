@@ -25,7 +25,7 @@ def run():
         license="public domain",
         author="Jeff Kunce",
         maintainer_email="dbfpy-users@lists.sourceforge.net",
-        packages=["dbfpy"],
+        packages=["dbfpy3"],
         long_description=DESCRIPTION,
         download_url=
             "http://sourceforge.net/project/showfiles.php?group_id=140566",
