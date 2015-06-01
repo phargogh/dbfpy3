@@ -33,6 +33,7 @@ __all__ = ["lookupFor",] # field classes added at the end of the module
 import datetime
 import struct
 import sys
+import locale
 
 from . import utils
 
@@ -125,7 +126,7 @@ class DbfFieldDef(object):
         """
         assert len(string) == 32
         _length = string[16]
-        return cls(utils.unzfill(string)[:11].decode('utf-8'), _length,
+        return cls(utils.unzfill(string)[:11].decode(locale.getpreferredencoding()), _length,
             string[17], start, start + _length, ignoreErrors=ignoreErrors)
     fromString = classmethod(fromString)
 
@@ -209,7 +210,7 @@ class DbfCharacterFieldDef(DbfFieldDef):
         Return value is a ``value`` argument with stripped right spaces.
 
         """
-        return value.rstrip(b' ').decode('utf-8')
+        return value.rstrip(b' ').decode(locale.getpreferredencoding())
 
     def encodeValue(self, value):
         """Return raw data string encoded from a ``value``."""
